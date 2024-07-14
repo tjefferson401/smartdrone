@@ -1,0 +1,118 @@
+<mujoco model="two_spheres">
+    <!-- <compiler angle="radian" coordinate="local" autolimits="true"/> -->
+    <option gravity="0 0 -10"/>
+    <option timestep="0.005"/>
+    <visual>
+        <quality offsamples="0"/>
+    </visual>
+   <default class="visual">
+        <geom group="2" type="mesh" contype="0" conaffinity="0"/>
+      </default>
+
+      <visual>
+    <headlight diffuse="0.6 0.6 0.6" ambient="0.3 0.3 0.3" specular="0 0 0"/>
+    <rgba haze="0.15 0.25 0.35 1"/>
+    <global azimuth="-20" elevation="-20" ellipsoidinertia="true"/>
+  </visual>
+
+    <asset>
+        <material name="transparent_material" rgba="1 1 .5 0."/>
+        <texture type="skybox" builtin="gradient" rgb1="0.3 0.5 0.7" rgb2="0 0 0" width="512" height="3072"/>
+        <texture type="2d" name="groundplane" builtin="checker" mark="edge" rgb1="0.2 0.3 0.4" rgb2="0.1 0.2 0.3" markrgb="0.8 0.8 0.8" width="300" height="300"/> -->
+        <material name="groundplane" texture="groundplane" texuniform="true" texrepeat="5 5" reflectance="0."/>         -->
+
+    </asset>
+    <worldbody>
+        <camera name="cam_top" pos="0.0 0.1 1" quat="0 0 0 1" fovy="45"/>
+        <camera name="cam_bot" pos="0 0.1 -1" quat="0 1 0 0" fovy="45"/>
+
+        <camera name="cam_left" pos="1 0.1 0.1" euler="0 1.57 0" fovy="45"/>
+        <camera name="cam_right" pos="-1 0.1 0.1" euler="0 -1.57 0" fovy="45"/>  
+
+        <camera name="cam_front" pos="0. 1 0.1" euler="-1.57 0 0" fovy="45"/>
+        <camera name="cam_back" pos="-0. -1 0.1" euler="1.57 0 0" fovy="45"/> 
+        <body name="robot1" pos="-2 2 0.">
+            <geom name="box2_geom2" type="box" size="0.1 0.1 0.1" rgba="1 0 0 1" mass="1"/>
+            <joint name="joint_x" type="slide" pos="0 0 0" axis="1 0 0" damping="100" range="-10 10"/>
+            <joint name="joint_y" type="slide" pos="0 0 0" axis="0 1 0" damping="100" range="-10 10"/>
+            <joint name="joint_z" type="slide" pos="0 0 0" axis="0 0 1" damping="100" range="-10 10"/>
+            <joint name="joint_rx" type="hinge" axis="1 0 0" damping="10" range="-3.14 3.14"/>
+            <joint name="joint_ry" type="hinge" axis="0 1 0" damping="10" range="-3.14 3.14"/>
+            <joint name="joint_rz" type="hinge" axis="0 0 1" damping="10" range="-3.14 3.14"/>
+        </body>
+        <body name="robot2" pos="2 2 0.">
+            <geom name="box2_geom" type="box" size="0.1 0.1 0.1" rgba="1 0 0 1" mass="1"/>
+            <joint name="joint_x2" type="slide" pos="0 0 0" axis="1 0 0" damping="100" range="-10 10"/>
+            <joint name="joint_y2" type="slide" pos="0 0 0" axis="0 1 0" damping="100" range="-10 10"/>
+            <joint name="joint_z2" type="slide" pos="0 0 0" axis="0 0 1" damping="100" range="-10 10"/>
+            <joint name="joint_rx2" type="hinge" axis="1 0 0" damping="10" range="-3.14 3.14"/>
+            <joint name="joint_ry2" type="hinge" axis="0 1 0" damping="10" range="-3.14 3.14"/>
+            <joint name="joint_rz2" type="hinge" axis="0 0 1" damping="10" range="-3.14 3.14"/>
+        </body>
+        <body name="robot3" pos="-2 -2 0.">
+            <geom name="box3_geom" type="box" size="0.1 0.1 0.1" rgba="1 0 0 1" mass="1"/>
+            <joint name="joint_x3" type="slide" pos="0 0 0" axis="1 0 0" damping="100" range="-10 10"/>
+            <joint name="joint_y3" type="slide" pos="0 0 0" axis="0 1 0" damping="100" range="-10 10"/>
+            <joint name="joint_z3" type="slide" pos="0 0 0" axis="0 0 1" damping="100" range="-10 10"/>
+            <joint name="joint_rx3" type="hinge" axis="1 0 0" damping="10" range="-3.14 3.14"/>
+            <joint name="joint_ry3" type="hinge" axis="0 1 0" damping="10" range="-3.14 3.14"/>
+            <joint name="joint_rz3" type="hinge" axis="0 0 1" damping="10" range="-3.14 3.14"/>
+        </body>
+        <body name="robot4" pos="2 -2. 0.">
+            <geom name="box4_geom" type="box" size="0.1 0.1 0.1" rgba="1 0 0 1" mass="1"/>
+            <joint name="joint_x4" type="slide" pos="0 0 0" axis="1 0 0" damping="100" range="-10 10"/>
+            <joint name="joint_y4" type="slide" pos="0 0 0" axis="0 1 0" damping="100" range="-10 10"/>
+            <joint name="joint_z4" type="slide" pos="0 0 0" axis="0 0 1" damping="100" range="-10 10"/>
+            <joint name="joint_rx4" type="hinge" axis="1 0 0" damping="10" range="-3.14 3.14"/>
+            <joint name="joint_ry4" type="hinge" axis="0 1 0" damping="10" range="-3.14 3.14"/>
+            <joint name="joint_rz4" type="hinge" axis="0 0 1" damping="10" range="-3.14 3.14"/>
+        </body>
+        <body name="robot5" pos="0 -0. 0.">
+            <geom name="box5_geom" type="box" size="0.1 0.1 0.1" rgba="1 0 0 1" mass="1"/>
+            <joint name="joint_x5" type="slide" pos="0 0 0" axis="1 0 0" damping="100" range="-10 10"/>
+            <joint name="joint_y5" type="slide" pos="0 0 0" axis="0 1 0" damping="100" range="-10 10"/>
+            <joint name="joint_z5" type="slide" pos="0 0 0" axis="0 0 1" damping="100" range="-10 10"/>
+            <joint name="joint_rx5" type="hinge" axis="1 0 0" damping="10" range="-3.14 3.14"/>
+            <joint name="joint_ry5" type="hinge" axis="0 1 0" damping="10" range="-3.14 3.14"/>
+            <joint name="joint_rz5" type="hinge" axis="0 0 1" damping="10" range="-3.14 3.14"/>
+        </body>
+            <geom name="floor" size="0 0 0.05" type="plane" material="groundplane"/>
+
+    </worldbody>
+    <actuator>
+        <position name="actuator_x" joint="joint_x" kp="5000" />
+        <position name="actuator_y" joint="joint_y" kp="5000" />
+        <position name="actuator_z" joint="joint_z" kp="5000" />
+        <position name="actuator_rx" joint="joint_rx" kp="5000"/>
+        <position name="actuator_ry" joint="joint_ry" kp="5000" />
+        <position name="actuator_rz" joint="joint_rz" kp="5000" />
+
+        <position name="actuator_x2" joint="joint_x2" kp="5000"/>
+        <position name="actuator_y2" joint="joint_y2" kp="5000" />
+        <position name="actuator_z2" joint="joint_z2" kp="5000" />
+        <position name="actuator_rx2" joint="joint_rx2" kp="5000"/>
+        <position name="actuator_ry2" joint="joint_ry2" kp="5000" />
+        <position name="actuator_rz2" joint="joint_rz2" kp="5000" />
+
+        <position name="actuator_x3" joint="joint_x3" kp="5000"/>
+        <position name="actuator_y3" joint="joint_y3" kp="5000" />
+        <position name="actuator_z3" joint="joint_z3" kp="5000" />
+        <position name="actuator_rx3" joint="joint_rx3" kp="5000"/>
+        <position name="actuator_ry3" joint="joint_ry3" kp="5000" />
+        <position name="actuator_rz3" joint="joint_rz3" kp="5000" />
+
+        <position name="actuator_x4" joint="joint_x4" kp="5000"/>
+        <position name="actuator_y4" joint="joint_y4" kp="5000" />
+        <position name="actuator_z4" joint="joint_z4" kp="5000" />
+        <position name="actuator_rx4" joint="joint_rx4" kp="5000"/>
+        <position name="actuator_ry4" joint="joint_ry4" kp="5000" />
+        <position name="actuator_rz4" joint="joint_rz4" kp="5000" />
+
+        <position name="actuator_x5" joint="joint_x5" kp="5000"/>
+        <position name="actuator_y5" joint="joint_y5" kp="5000" />
+        <position name="actuator_z5" joint="joint_z5" kp="5000" />
+        <position name="actuator_rx5" joint="joint_rx5" kp="5000"/>
+        <position name="actuator_ry5" joint="joint_ry5" kp="5000"/>
+        <position name="actuator_rz5" joint="joint_rz5" kp="5000"/>
+    </actuator>
+</mujoco>
