@@ -24,7 +24,7 @@ Middleware:
 `cd ws && pip install requirements.txt && cd ..`
 
 
-Mujoco simulation code contained in mujoco folder
+Mujoco simulation code contained in `drone-private` folder
 
 
 # smartdrone
